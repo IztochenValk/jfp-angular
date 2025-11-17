@@ -1,0 +1,21 @@
+<div class="flex justify-center items-center min-h-[80vh]">
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title text-center">{{ title() }}</h2>
+
+      <p class="text-sm opacity-70">
+        This is a minimal Angular page using TailwindCSS and DaisyUI.
+      </p>
+
+      <div class="text-center mt-4">
+        <span class="badge badge-lg badge-primary">Counter: {{ count }}</span>
+      </div>
+
+      <div class="card-actions justify-center mt-6">
+        <button class="btn btn-primary" (click)="increment()">
+          Increase
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

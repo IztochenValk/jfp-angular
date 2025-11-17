@@ -1,0 +1,31 @@
+<div class="card w-[420px] bg-base-100 shadow-xl rounded-3xl overflow-hidden">
+  <figure class="h-40 w-full overflow-hidden">
+    <img
+      [src]="imageUrl"
+      alt="Profile banner"
+      class="w-full h-full object-cover"
+    />
+  </figure>
+
+  <div class="card-body px-8 py-6">
+    <h2 class="card-title text-xl font-semibold text-primary mb-2">
+      {{ fullName }}
+    </h2>
+    <p class="text-sm">
+      <span class="font-semibold">Status :</span>
+      <span class="ml-1">{{ status }}</span>
+    </p>
+    <p class="text-sm">
+      <span class="font-semibold">Âge :</span>
+      <span class="ml-1">{{ age }}</span>
+    </p>
+    <p class="text-sm mt-2">
+      <span class="font-semibold">Bio :</span>
+      <span class="ml-1">{{ bio }}</span>
+    </p>
+    <p class="text-sm mt-2">
+      <span class="font-semibold">Réputation :</span>
+      <span class="ml-1">{{ reputation }}</span>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+<div class="container mx-auto my-8 space-y-8">
+  <!-- 🟦 Introduction -->
+  <div class="card bg-base-200 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title text-primary text-2xl">🔗 Property Binding & Attribute Binding</h2>
+      <p>
+        Angular permet de lier des données du composant à des éléments HTML.
+        Deux grandes familles :
+      </p>
+      <ul class="list-disc list-inside">
+        <li><strong>Property Binding</strong> : liaison à une propriété DOM.</li>
+        <li><strong>Attribute Binding</strong> : liaison à un attribut HTML standard ou custom.</li>
+      </ul>
+      <p class="mt-2">Syntaxe commune : <code class="badge badge-outline">[property]="expression"</code> ou <code class="badge badge-outline">[attr.attribut]="expression"</code>.</p>
+    </div>
+  </div>
+
+  <!-- 🟩 Property Binding -->
+  <div class="card bg-base-100 shadow-lg">
+    <div class="card-body">
+      <h3 class="text-lg font-bold">1️⃣ Exemple : Property Binding</h3>
+
+      <div class="flex flex-col lg:flex-row items-center gap-6">
+        <!-- Image avec [src] -->
+        <img [src]="imageUrl" alt="Image property binding" class="rounded-lg shadow-md w-72" />
+        <div>
+          <p class="text-sm opacity-70">
+            Code : <code>&lt;img [src]="imageUrl"&gt;</code>
+          </p>
+
+          <!-- Bouton disabled -->
+          <button class="btn btn-secondary mr-2" [disabled]="buttonDisabled">
+            Bouton avec [disabled]
+          </button>
+          <button class="btn btn-outline mt-2" (click)="toggleButton()">
+            Basculer état du bouton
+          </button>
+
+          <p class="text-sm opacity-70 mt-2">
+            Code : <code>&lt;button [disabled]="buttonDisabled"&gt;</code>
+          </p>
+
+          <!-- Input avec [placeholder] -->
+          <input class="input input-bordered mt-2 w-full" [placeholder]="inputPlaceholder" />
+          <p class="text-sm opacity-70 mt-2">
+            Code : <code>&lt;input [placeholder]="inputPlaceholder"&gt;</code>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🟧 Attribute Binding -->
+  <div class="card bg-base-100 shadow-lg">
+    <div class="card-body">
+      <h3 class="text-lg font-bold">2️⃣ Exemple : Attribute Binding</h3>
+
+      <p class="mb-4">
+        Certains attributs HTML n’ont pas de propriétés DOM correspondantes ou sont custom.
+        Dans ce cas, on utilise <code>[attr.attribut]</code>.
+      </p>
+
+      <button
+        class="btn btn-primary mr-2"
+        [attr.aria-label]="ariaLabel"
+        [attr.data-custom]="customAttr">
+        Bouton avec attributs dynamiques
+      </button>
+
+      <p class="text-sm opacity-70 mt-2">
+        Code : <code>&lt;button [attr.aria-label]="ariaLabel" [attr.data-custom]="customAttr"&gt;</code>
+      </p>
+    </div>
+  </div>
+
+  <!-- 🟨 Différences expliquées -->
+  <div class="alert alert-info">
+    <h4 class="font-bold">💡 Différence Property vs Attribute Binding</h4>
+    <ul class="list-disc list-inside">
+      <li><strong>Property Binding</strong> agit sur l’objet DOM directement → plus performant, recommandé.</li>
+      <li><strong>Attribute Binding</strong> agit sur l’attribut HTML → utile pour aria-* ou data-*.</li>
+      <li>Si possible, privilégier Property Binding.</li>
+    </ul>
+  </div>
+
+  <!-- 🟩 Bonnes pratiques -->
+  <div class="alert alert-success">
+    <h4 class="font-bold">✅ Bonnes pratiques</h4>
+    <ul class="list-disc list-inside">
+      <li>Préparer vos variables dans le .ts pour ne pas surcharger le template.</li>
+      <!-- <li>Utiliser <code>[disabled]</code> plutôt que <code>disabled="{{variable}}"</code>.</li> -->
+      <li>Pour les attributs spéciaux, utiliser <code>[attr.nom]</code>.</li>
+    </ul>
+  </div>
+</div>
