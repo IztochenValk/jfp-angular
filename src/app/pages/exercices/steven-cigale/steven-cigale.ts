@@ -5,8 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './steven-cigale.html',
 })
 export class StevenCigale {
-  @Input() imageUrl =
-    'https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg';
+  @Input() imageUrl = 'https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg';
 
   @Input() fullName = 'Steven Cigale';
   @Input() status = 'Offline';

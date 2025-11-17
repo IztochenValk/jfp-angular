@@ -1,0 +1,23 @@
+<div class="card">
+  <h1 class="title">
+    <span class="title-main">List Friends</span>
+    <span class="title-sub"> (Event Binding)</span>
+  </h1>
+
+  <label for="friendName" class="label">Nom de l'ami</label>
+  <input [value]="friendAdded? '' : friendName" id="friendName" type="text" class="input" placeholder="{{friendName}}" (keyup)="onInputChange($event)" (keyup.enter)="addFriend()"/>
+
+  <p class="friend-preview">
+    {{ friendName }}
+  </p>
+
+  <p>
+    {{ friendsList.length == 0? youHave0Friend : youHaveSomeFriends  }} 
+  </p>
+<button class="btn btn-primary btn-sm" (click)="addFriend()" [disabled]="!friendName || friendAdded">Ajouter Ami</button>
+    <div>
+        <ul class="friends-list" [innerHTML]="friendsList.join('')">
+
+        </ul>
+    </div>
+</div>

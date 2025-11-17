@@ -34,6 +34,22 @@ export const routes: Routes = [
         (m) => m.StevenCigale
         ,
       ),
+  },
+  {
+    path: 'exercices/event-binding',
+    loadComponent: () =>
+      import('./pages/exercices/event-binding/event-binding').then(
+        (m) => m.EventBinding
+        ,
+      ),
+  },
+  {
+    path: 'exercices/list-friends',
+    loadComponent: () =>
+      import('./pages/exercices/list-friends/list-friends').then(
+        (m) => m.ListFriends
+        ,
+      ),
   },  
     {
     path: '**',
