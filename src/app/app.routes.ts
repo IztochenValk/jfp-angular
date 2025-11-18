@@ -50,7 +50,23 @@ export const routes: Routes = [
         (m) => m.ListFriends
         ,
       ),
-  },  
+  },
+  {
+    path: 'exercices/exo-8',
+    loadComponent: () =>
+      import('./pages/exercices/exo-8/exo-8').then(
+        (m) => m.Exo8
+        ,
+      ),
+  },
+  {
+    path: 'exercices/exo-directives',
+    loadComponent: () =>
+      import('./pages/exercices/exo-directives/exo-directives').then(
+        (m) => m.ExoDirectives
+        ,
+      ),
+  },
     {
     path: '**',
     loadComponent: () =>

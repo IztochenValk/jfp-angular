@@ -1,0 +1,25 @@
+<div class="amis-container">
+  <h1>SLT on est dans le AppComponent</h1>
+
+  <div class="amis-content">
+    <input type="text" [(ngModel)]="amiName" class="ami-input"/>
+
+    <button class="btn-add" (click)="onCreationAmi()">Ajouter Ami</button>
+
+    <!-- Exo 9 + 10 : message conditionnel -->
+    <p class="creation-msg" *ngIf="listFriendCreated">
+      {{ lesAmisCreationStatus }}
+    </p>
+
+    <h2>La liste des copains :</h2>
+
+    <div class="friends-box">
+      <p>ID : 99</p>
+      <p>status : off</p>
+      <p>Du texte</p>
+      <p>Hello</p>
+      <p>&lt;p&gt;LOL&lt;/p&gt;</p>
+      <p>avec une f° exécutée dans le template : off</p>
+    </div>
+  </div>
+</div>
