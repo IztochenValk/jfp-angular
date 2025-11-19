@@ -67,6 +67,14 @@ export const routes: Routes = [
         ,
       ),
   },
+  {
+    path: 'exercices/api-pokemon',
+    loadComponent: () =>
+      import('./pages/exercices/api-pokemon/api-pokemon').then(
+        (m) => m.ApiPokemon
+        ,
+      ),
+  },
     {
     path: '**',
     loadComponent: () =>

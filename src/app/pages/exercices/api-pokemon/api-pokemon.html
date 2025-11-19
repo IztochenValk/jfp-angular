@@ -1,0 +1,24 @@
+<div class="min-h-screen bg-base-200">
+  <div class="max-w-6xl mx-auto py-10 px-4">
+    <h1 class="text-4xl font-bold text-center mb-8">
+      Pokemon List
+    </h1>
+
+    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div
+        *ngFor="let pokemon of pokemons"
+        class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow"
+      >
+        <figure class="px-6 pt-6">
+          <img [src]="pokemon.image" [alt]="pokemon.name" class="rounded-xl w-full h-48 object-contain"/>
+        </figure>
+        <div class="card-body items-center text-center">
+          <h2 class="card-title capitalize">
+            {{ pokemon.name }}
+          </h2>
+          <p class="opacity-60">#{{ pokemon.id }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
