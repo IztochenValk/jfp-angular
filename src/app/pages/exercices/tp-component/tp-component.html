@@ -1,0 +1,14 @@
+<div class="min-h-screen flex flex-col justify-center items-center bg-amber-400 p-6">
+  <h1 class="text-xl font-semibold text-center mb-8 text-black">
+    Composant Gestion de l'utilisateur
+  </h1>
+
+  <app-user-active [name]="user.name" [age]="user.age"></app-user-active>
+  <app-user-data [hasError]="isError" (updateUser)="onUpdateUser($event)"></app-user-data>
+
+  @if (isError) {
+    <p class="mt-4 text-red-700 font-semibold">
+      Erreur : veuillez renseigner correctement le nom et l'âge
+    </p>
+  }
+</div>

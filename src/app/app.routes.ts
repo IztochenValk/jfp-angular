@@ -68,6 +68,14 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'exercices/tp-component',
+    loadComponent: () =>
+      import('./pages/exercices/tp-component/tp-component').then(
+        (m) => m.TpComponent
+        ,
+      ),
+  },
+  {
     path: 'exercices/api-pokemon',
     loadComponent: () =>
       import('./pages/exercices/api-pokemon/api-pokemon').then(
@@ -75,11 +83,13 @@ export const routes: Routes = [
         ,
       ),
   },
+
     {
     path: '**',
     loadComponent: () =>
         import('./pages/not-found/not-found').then(
         (m) => m.NotFound
         ),
-    }
+    },
+
 ];

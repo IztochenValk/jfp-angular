@@ -1,0 +1,29 @@
+<div class="w-full max-w-md bg-white shadow-lg border border-gray-300 rounded-lg p-6">
+  <h2 class="text-lg font-semibold mb-4">
+    Modifier les informations de l'utilisateur
+  </h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+      <label class="block text-sm font-medium mb-1">
+        Nom
+      </label>
+      <input class="input input-bordered w-full" [(ngModel)]="userName" name="name" type="text" placeholder="Entrez un nom">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium mb-1">
+        Âge
+      </label>
+      <input class="input input-bordered w-full" [(ngModel)]="userAge" name="age" type="number" placeholder="Entrez un âge">
+    </div>
+
+    <button class="btn btn-primary w-full mt-2" type="submit"> Mettre à jour</button>
+
+    @if (hasError) {
+      <p class="text-red-600 text-sm mt-3">
+        Les informations saisies ne sont pas valides. Vérifiez le nom et l'âge.
+      </p>
+    }
+  </form>
+</div>
