@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { Home } from './pages/home/home'; 
+import { AuthGuardService } from './services/auth-guard.service';
 
 export const routes: Routes = [
   {
@@ -8,6 +9,7 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
+    canActivate: [AuthGuardService],
     loadComponent: () =>
       import('./pages/dashboard/dashboard').then(
         (m) => m.Dashboard,
@@ -80,6 +82,38 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/exercices/api-pokemon/api-pokemon').then(
         (m) => m.ApiPokemon
+        ,
+      ),
+  },
+  {
+    path: 'register',
+    loadComponent: () =>
+      import('./pages/register/register').then(
+        (m) => m.Register
+        ,
+      ),
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login').then(
+        (m) => m.Login
+        ,
+      ),
+  },
+  {
+    path: 'dashboard',
+    loadComponent: () =>
+      import('./pages/dashboard/dashboard').then(
+        (m) => m.Dashboard
+        ,
+      ),
+  },
+  {
+    path: 'task-list-firebase',
+    loadComponent: () =>
+      import('./pages/task-list-firebase/task-list-firebase').then(
+        (m) => m.TaskListFirebase
         ,
       ),
   },

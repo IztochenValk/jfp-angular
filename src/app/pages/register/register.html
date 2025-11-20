@@ -1,0 +1,49 @@
+<div class="flex justify-center items-center min-h-screen bg-base-200">
+  <div class="card w-full max-w-md shadow-2xl bg-base-100">
+    <div class="card-body">
+      <h1 class="text-2xl font-bold text-center mb-4">
+        Inscription avec Email et Mot de Passe
+      </h1>
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Email</span>
+        </label>
+        <input
+          [(ngModel)]="email"
+          type="email"
+          placeholder="Entrez votre email"
+          class="input input-bordered mb-3"
+        />
+      </div>
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Mot de passe</span>
+        </label>
+        <input
+          [(ngModel)]="password"
+          type="password"
+          placeholder="Entrez votre mot de passe"
+          class="input input-bordered mb-3"
+        />
+      </div>
+
+      <button (click)="signUp()" class="btn btn-primary w-full">
+        S'inscrire
+      </button>
+
+      <div *ngIf="user" class="mt-4">
+        <div class="alert alert-success shadow-lg">
+          <span>Utilisateur inscrit : {{ user.email }}</span>
+        </div>
+      </div>
+
+      <div *ngIf="error" class="mt-4">
+        <div class="alert alert-error shadow-lg">
+          <span>{{ error }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

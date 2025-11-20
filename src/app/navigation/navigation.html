@@ -7,6 +7,9 @@
     <ul class="menu menu-horizontal px-1 gap-2">
       <li><a routerLink="/">Home</a></li>
       <li><a routerLink="/dashboard">Dashboard</a></li>
+      <li><a routerLink="/register">Register</a></li>
+      <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/task-list-firebase">CRUD</a></li>
       <li>
         <details>
           <summary>Exercices</summary>
@@ -27,6 +30,10 @@
   </div>
 
   <div class="navbar-end">
-    <button class="btn btn-sm btn-primary">Login</button>
+@if (currentUser) {
+         <button class="btn btn-sm btn-warning" (click)="logOut()">Se déconnecter</button>
+      } @else {
+         <button class="btn btn-sm btn-primary" routerLink="/login">Login</button>
+      }
   </div>
 </header>

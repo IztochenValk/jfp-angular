@@ -1,1 +1,78 @@
-<p>dashboard works!</p>
+<div class="p-6 bg-base-200 min-h-screen">
+  <!-- Grid des 3 cartes -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- 🟦 Card Statistiques -->
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h5 class="card-title text-center">Statistiques</h5>
+        <div class="flex justify-between items-center">
+          <div class="text-center">
+            <h3 class="text-2xl font-bold">1,500</h3>
+            <p class="text-sm opacity-70">Ventes</p>
+          </div>
+          <div class="text-center">
+            <h3 class="text-2xl font-bold">120</h3>
+            <p class="text-sm opacity-70">Clients</p>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary w-full">Voir plus</button>
+      </div>
+    </div>
+
+    <!-- 🟩 Card Graphique -->
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h5 class="card-title text-center">Graphique</h5>
+        <div class="flex justify-center items-center my-4">
+          <div class="bg-primary rounded-full p-6 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 17v-6m4 6V9m4 8V5" />
+            </svg>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-warning w-full">Analyser</button>
+      </div>
+    </div>
+
+    <!-- 🟥 Card Notifications -->
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h5 class="card-title text-center">Notifications</h5>
+        <ul class="menu bg-base-100 w-full rounded-box">
+          <li class="flex justify-between">
+            <span>Nouvelle vente</span>
+            <span class="badge badge-success">+15</span>
+          </li>
+          <li class="flex justify-between">
+            <span>Nouveau message</span>
+            <span class="badge badge-info">2</span>
+          </li>
+          <li class="flex justify-between">
+            <span>Retour produit</span>
+            <span class="badge badge-error">1</span>
+          </li>
+        </ul>
+        <div class="divider"></div>
+        <button class="btn btn-error w-full">Voir toutes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🟨 Activité récente -->
+  <div class="mt-8">
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h5 class="card-title text-center">Activité Récente</h5>
+        <ul class="menu bg-base-100 w-full rounded-box">
+          <li>Client A a effectué un achat</li>
+          <li>Client B a laissé un message</li>
+          <li>Retour produit par Client C</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
