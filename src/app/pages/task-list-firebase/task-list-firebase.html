@@ -1,1 +1,36 @@
-<p>task-list-firebase works!</p>
+<div class="container mt-5">
+
+  <h2>Liste des tâches</h2>
+
+  <form (ngSubmit)="addTask()" class="d-flex mb-3">
+    <input [(ngModel)]="newTask.title" name="task" type="text" placeholder="Nouvelle tâche" class="form-control me-2" />
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </form>
+
+  <ul class="list-group w-full">
+
+    @for (task of tasks; track task.id) {
+      <li class="list-group-item justify-around w-full flex py-3">
+        
+        <span class="fw-bold">{{ task.title }}</span>
+
+        <span class="badge" [ngClass]="task.status === 'completed' ? 'bg-success' : 'bg-warning text-dark'">
+          {{ task.status }}
+        </span>
+
+        <div class="d-flex w-full">
+          <button type="button" class="btn btn-info btn-sm me-2" (click)="onToggleStatus(task)">Changer le statut</button>
+          <button type="button" class="btn btn-error btn-sm" (click)="onDelete(task)">Supprimer</button>
+        </div>
+
+      </li>
+    <div class="divider divider-horizontal">  </div>  
+    }
+
+    @if (tasks.length === 0) {
+      <li class="list-group-item text-center text-muted">Aucune tâche pour le moment</li>
+    }
+
+  </ul>
+
+</div>

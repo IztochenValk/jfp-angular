@@ -1,61 +1,46 @@
-import { environment } from './../../../environments/environment.development';
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { Database, set, ref, push, onValue } from '@angular/fire/database';
 import { FormsModule } from '@angular/forms';
+import { NgClass } from '@angular/common';
+import { onValue } from '@angular/fire/database';
+import { TaskService } from '../../services/task.service';
+import { Task } from '../../models/task.model';
 
 @Component({
   selector: 'app-task-list-firebase',
-  imports: [FormsModule,NgFor],
-  // templateUrl: './task-list-firebase.html',
-  template: `
-    <div class="container mt-5">
-
-      <h2>Liste des tâches</h2>
-      <form (ngSubmit)="addTask()" class="d-flex mb-3">
-        <input
-          [(ngModel)]="newTask.title"
-          name="task"
-          type="text"
-          placeholder="Nouvelle tâche"
-          class="form-control me-2"
-        />
-        <button type="submit" class="btn btn-primary">Ajouter</button>
-      </form>
-
-      <ul class="list-group">
-        <li *ngFor="let task of tasks" class="list-group-item">{{ task.title }} Status  : {{task.status}}</li>
-      </ul>
-    </div>
-  ` ,
+  standalone: true,
+  imports: [FormsModule, NgClass],
+  templateUrl: './task-list-firebase.html'
 })
 export class TaskListFirebase {
-  tasks: { title: string; status: string }[] = []; // Liste des tâches
-  newTask = { title: '', status: 'pending' }; // Tâche à ajouter
+  tasks: Task[] = [];
+  newTask = { title: '', status: 'pending' };
 
-  constructor(private db:Database){
-    const tasksRef = ref(this.db, 'tasks');
-    // Récupération en temps réel des tâches
-    onValue(tasksRef, (snapshot) => {
-      // .val pour récuperer toutes les données de la base dans tasks
-      const data = snapshot.val();
-      console.log(data);
-      // console.log(data);
-      // On récupère le méga objet tasks de la base mais on en fait un tableau d'objet de tasks
-      this.tasks = data ? Object.values(data) : [];
-      console.log(this.tasks);
+  constructor(private taskService: TaskService) {
+    const tasksRef = this.taskService.getTasksRef();
+    onValue(tasksRef, snapshot => {
+      const data = snapshot.val() || {};
+      this.tasks = Object.entries<any>(data).map(([id, value]) => ({
+        id,
+        title: value.title,
+        status: value.status
+      }));
     });
   }
 
-
   addTask() {
-    if (this.newTask.title.trim()) {
-      // On vise les tasks dans notre BDD
-      const tasksRef = ref(this.db, 'tasks');
-      const newTaskRef = push(tasksRef);
-      set(newTaskRef, this.newTask); // Enregistrer l'objet newTask
-      this.newTask = { title: '', status: 'pending' }; // Réinitialiser le champ
-    }
+    const title = this.newTask.title.trim();
+    if (!title) return;
+    this.taskService.addTask({ title, status: 'pending' }).then(() => {
+      this.newTask = { title: '', status: 'pending' };
+    });
   }
 
+  onToggleStatus(task: Task) {
+    this.taskService.toggleStatus(task);
+  }
+
+  onDelete(task: Task) {
+    if (!task.id) return;
+    this.taskService.deleteTask(task.id);
+  }
 }
