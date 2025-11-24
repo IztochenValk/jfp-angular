@@ -13,16 +13,21 @@ import { Task } from '../../models/task.model';
 })
 export class TaskListFirebase {
   tasks: Task[] = [];
-  newTask = { title: '', status: 'pending' };
+
+  newTask: Task = {
+    title: '',
+    status: 'pending'
+  };
 
   constructor(private taskService: TaskService) {
     const tasksRef = this.taskService.getTasksRef();
     onValue(tasksRef, snapshot => {
       const data = snapshot.val() || {};
+
       this.tasks = Object.entries<any>(data).map(([id, value]) => ({
         id,
         title: value.title,
-        status: value.status
+        status: value.status,
       }));
     });
   }
@@ -30,9 +35,17 @@ export class TaskListFirebase {
   addTask() {
     const title = this.newTask.title.trim();
     if (!title) return;
-    this.taskService.addTask({ title, status: 'pending' }).then(() => {
-      this.newTask = { title: '', status: 'pending' };
+
+    this.taskService.addTask({
+      title: title,
+      status: 'pending'
     });
+
+    this.newTask = { title: '', status: 'pending' };
+  }
+
+  updateTask(task: Task) {
+    this.taskService.updateTask(task);
   }
 
   onToggleStatus(task: Task) {
