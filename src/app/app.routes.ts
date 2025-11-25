@@ -117,7 +117,22 @@ export const routes: Routes = [
         ,
       ),
   },
-
+  {
+    path: 'exercices/randomizer',
+    loadComponent: () =>
+      import('./pages/randomizer/randomizer').then(
+        (m) => m.Randomizer
+        ,
+      ),
+  },
+  {
+    path: 'exercices/task-manager',
+    loadComponent: () =>
+      import('./pages/task-manager/task-manager').then(
+        (m) => m.TaskManager
+        ,
+      ),
+  },
     {
     path: '**',
     loadComponent: () =>

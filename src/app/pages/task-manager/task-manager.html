@@ -1,0 +1,92 @@
+<div class="container mx-auto p-4 max-w-lg">
+
+  <h1 class="text-3xl font-bold text-center text-primary mb-6">Suivi des Tâches</h1>
+
+  <div class="card bg-base-100 shadow-xl mb-6">
+    <div class="card-body">
+      <h3 class="card-title text-xl mb-3">Ajouter une tâche</h3>
+
+      <div class="flex items-center gap-2">
+        <input type="text" class="input input-bordered flex-1" placeholder="Titre de la tâche" [value]="newTitle()" (input)="setTitle($any($event.target).value)" />
+        <select class="select select-bordered" [value]="newPriority()" (change)="setPriority($any($event.target).value)">
+          <option value="high">Haute</option>
+          <option value="medium">Moyenne</option>
+          <option value="low">Basse</option>
+        </select>
+        <button type="button" class="btn btn-success" (click)="addTask()">Ajouter</button>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div class="card bg-base-100 shadow-xl mb-6">
+    <div class="card-body">
+      <h3 class="card-title text-xl mb-3">Liste des Tâches</h3>
+
+      <ul class="space-y-3">
+
+        @for (task of sortedTasks(); track $index) {
+          <li class="flex justify-between items-center p-3 bg-base-200 rounded-lg">
+
+            <div>
+              <span class="font-medium">{{ task.title }}</span>
+              <span class="badge badge-sm ml-2">{{ task.priority === 'high' ? 'Haute' : task.priority === 'medium' ? 'Moyenne' : 'Basse' }}</span>
+              <span class="ml-2 text-xs" 
+                [class.text-success]="task.isCompleted" 
+                [class.text-warning]="!task.isCompleted">
+                {{ task.isCompleted ? 'Complétée' : 'En cours' }}
+              </span>
+            </div>
+
+            <div class="flex space-x-2">
+              <button type="button" class="btn btn-sm btn-info" (click)="toggleTask(task)">{{ task.isCompleted ? 'Réactiver' : 'Complétée' }}</button>
+              <button type="button" class="btn btn-sm btn-outline btn-error" (click)="removeTask(task)">Supprimer</button>
+            </div>
+
+          </li>
+        }
+
+      </ul>
+    </div>
+  </div>
+
+
+
+  <div class="card bg-base-100 shadow-xl mb-6">
+    <div class="card-body">
+      <h3 class="card-title text-xl">Statistiques</h3>
+
+      <div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+        <div class="stat">
+          <div class="stat-title">Tâches complètes</div>
+          <div class="stat-value text-success">{{ completedCount() }}</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-title">Tâches restantes</div>
+          <div class="stat-value text-warning">{{ remainingCount() }}</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  @if (allCompleted()) {
+    <div class="alert alert-success shadow-lg">
+      <div>
+        <svg class="stroke-current flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div>
+          <h4 class="font-bold">Félicitations!</h4>
+          <div class="text-sm">Vous avez terminé toutes vos tâches !</div>
+        </div>
+      </div>
+    </div>
+  }
+
+</div>

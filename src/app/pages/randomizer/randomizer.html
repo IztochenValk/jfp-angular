@@ -1,0 +1,56 @@
+<button class="btn btn-primary btn-sm mr-3" (click)="launchGenerator()">
+  Démarrer La Génération
+</button>
+
+<button class="btn btn-error btn-sm" (click)="stopGenerator()">
+  Arrêter La Génération
+</button>
+
+<div class="divider"></div>
+
+<div class="card p-3 text-center">
+  <div class="card-actions justify-center mb-3">
+
+    <fieldset class="fieldset bg-base-100 border-base-300 rounded-box w-72 border p-4">
+      <legend class="fieldset-legend">Filtrage</legend>
+
+      <label class="label cursor-pointer gap-3">
+        <input
+          type="radio"
+          name="filter"
+          class="radio radio-primary"
+          value="all"
+          [(ngModel)]="filterNumbers"
+        />
+        <span class="label-text">All</span>
+      </label>
+
+      <label class="label cursor-pointer gap-3">
+        <input
+          type="radio"
+          name="filter"
+          class="radio radio-primary"
+          value="even"
+          [(ngModel)]="filterNumbers"
+        />
+        <span class="label-text">Even</span>
+      </label>
+
+      <label class="label cursor-pointer gap-3">
+        <input
+          type="radio"
+          name="filter"
+          class="radio radio-primary"
+          value="odd"
+          [(ngModel)]="filterNumbers"
+        />
+        <span class="label-text">Odd</span>
+      </label>
+
+    </fieldset>
+  </div>
+
+  <div class="card-body text-center">
+    <span class="text-3xl font-bold">{{ randomNumber }}</span>
+  </div>
+</div>
